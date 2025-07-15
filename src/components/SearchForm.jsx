@@ -1,13 +1,14 @@
 import { useState } from "react";
 
-export default function SearchForm({ onSearch }) {
-  const [city, setCity] = useState("");
+export default function SearchForm({ onSearch, city, setCity }) {
+  
+  const [updateValue, setUpdateValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!city.trim()) return;
-    onSearch(city.trim());
-    setCity("");
+    if (!updateValue.trim()) return;
+    onSearch(updateValue.trim());
+    
   };
 
   return (
@@ -19,8 +20,8 @@ export default function SearchForm({ onSearch }) {
         type="text"
         placeholder="City, Country ex: Elkin, US"
         className="px-4 py-2 rounded w-full sm:w-64 text-black"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
+        value={updateValue}
+        onChange={(e) => setUpdateValue(e.target.value)}
       />
       <button
         type="submit"

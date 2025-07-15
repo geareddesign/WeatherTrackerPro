@@ -3,7 +3,7 @@ import { format } from "date-fns";
 
 export default function ForecastDay({ day, tempUnit }) {
   // Convert temperature based on unit
-  const convertTemp = (tempC) => {
+  const toggleTemp = (tempC) => {
     return tempUnit === "C"
       ? Math.round(tempC)
       : Math.round(tempC * 9 / 5 + 32);
@@ -14,6 +14,9 @@ export default function ForecastDay({ day, tempUnit }) {
       <p className="font-semibold mb-2">
         {format(new Date(day.date), "EEE, MMM d")}
       </p>
+      <button onClick={toggleTemp}>
+        Celsius to Fahrenheit
+      </button>
       <img
         src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
         alt={day.description}
